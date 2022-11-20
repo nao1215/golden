@@ -19,35 +19,35 @@ func TestGoldenFileName(t *testing.T) {
 	}{
 		"using defaults": {
 			name:     "example",
-			expected: fmt.Sprintf("%s/%s%s", defaultFixtureDir, "example", defaultFileNameSuffix),
+			expected: filepath.Join(defaultFixtureDir, "example"+defaultFileNameSuffix),
 		},
 		"with custom suffix": {
 			name: "example",
 			options: []Option{
 				WithNameSuffix(".txt"),
 			},
-			expected: fmt.Sprintf("%s/%s%s", defaultFixtureDir, "example", ".txt"),
+			expected: filepath.Join(defaultFixtureDir, "example"+".txt"),
 		},
 		"with custom fixture dir": {
 			name: "example",
 			options: []Option{
 				WithFixtureDir("fixtures"),
 			},
-			expected: fmt.Sprintf("%s/%s%s", "fixtures", "example", defaultFileNameSuffix),
+			expected: filepath.Join("fixtures", "example"+defaultFileNameSuffix),
 		},
 		"using test name for dir": {
 			name: "example",
 			options: []Option{
 				WithTestNameForDir(true),
 			},
-			expected: fmt.Sprintf("%s/%s/%s%s", defaultFixtureDir, t.Name(), "example", defaultFileNameSuffix),
+			expected: filepath.Join(defaultFixtureDir, t.Name(), "example"+defaultFileNameSuffix),
 		},
 		"using sub test name for dir": {
 			name: "example",
 			options: []Option{
 				WithSubTestNameForDir(true),
 			},
-			expected: fmt.Sprintf("%s/%s/%s%s", defaultFixtureDir, "using_sub_test_name_for_dir", "example", defaultFileNameSuffix),
+			expected: filepath.Join(defaultFixtureDir, "using_sub_test_name_for_dir", "example"+defaultFileNameSuffix),
 		},
 	}
 
