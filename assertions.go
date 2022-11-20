@@ -155,7 +155,7 @@ func (g *Golden) compare(t *testing.T, name string, actualData []byte) error {
 		return fmt.Errorf("expected %s to be nil", err.Error())
 	}
 
-	if !bytes.Equal(actualData, expectedData) {
+	if !bytes.Equal(normalizeLF(actualData), normalizeLF(expectedData)) {
 		msg := "Result did not match the golden fixture. Diff is below:\n\n"
 		actual := string(actualData)
 		expected := string(expectedData)
