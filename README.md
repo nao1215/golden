@@ -1,4 +1,4 @@
-[![Coverage](https://github.com/nao1215/golden/actions/workflows/coverage.yml/badge.svg)](https://github.com/nao1215/golden/actions/workflows/coverage.yml)
+[![codecov](https://codecov.io/gh/nao1215/golden/branch/main/graph/badge.svg?token=1FOBHgWJpR)](https://codecov.io/gh/nao1215/golden)
 [![LinuxUnitTest](https://github.com/nao1215/golden/actions/workflows/linux_test.yml/badge.svg)](https://github.com/nao1215/golden/actions/workflows/linux_test.yml)
 [![MacUnitTest](https://github.com/nao1215/golden/actions/workflows/mac_test.yml/badge.svg)](https://github.com/nao1215/golden/actions/workflows/mac_test.yml)
 [![WindowsUnitTest](https://github.com/nao1215/golden/actions/workflows/windows.yml/badge.svg)](https://github.com/nao1215/golden/actions/workflows/windows.yml)
