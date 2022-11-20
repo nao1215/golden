@@ -1,16 +1,16 @@
 # golden - Golden test utility for Go
-`golden` is a golden file test utility for Go projects. It's typically used for
-testing responses with larger data bodies.
+`golden` is a golden file test utility for Go projects. It's typically used for testing responses with larger data bodies. 
+  
+The concept is straight forward. Valid response data is stored in a "golden file". The actual response data will be byte compared with the golden file and the test will fail if there is a difference. Updating the golden file can be done by running `go test -update ./...`.
 
-The concept is straight forward. Valid response data is stored in a "golden
-file". The actual response data will be byte compared with the golden file and
-the test will fail if there is a difference.
+See the [GoDoc](https://godoc.org/github.com/nao1215/golden) for API reference and configuration options.
+This project is forked from [github.com/sebdah/goldie](https://github.com/sebdah/goldie). Original project (== goldie) is not support windows. Also, there is deprecated function and not enough unit tests. So, I forked it.
 
-Updating the golden file can be done by running `go test -update ./...`.
-
-See the [GoDoc](https://godoc.org/github.com/nao1215/golden) for API reference
-and configuration options.
-
+# Support OS
+- Windows
+- Mac
+- Linux
+  
 # Example usage
 ## Basic assertions
 The below example fetches data from a REST API. The last line in the test is the
@@ -28,6 +28,7 @@ func TestExample(t *testing.T) {
     handler.ServeHTTP()
 
     g := golden.New(t)
+    // Compare testdata/example.golden and recorder.Body.Bytes()
     g.Assert(t, "example", recorder.Body.Bytes())
 }
 ```
@@ -135,16 +136,10 @@ g.New(
 ```
 
 ## New default fixture directory
-
-There is a new default directory for fixtures, `testdata`. This directory is a
-better default as it is more widely used in the Go community (including the
-standard library). See issue [#10](https://github.com/nao1215/golden/issues/10)
-for details.
+There is a new default directory for fixtures, `testdata`. This directory is a better default as it is more widely used in the Go community (including the standard library). 
 
 ## New way to initialize golden
-
-With the introduction of the functional options we also introduced `golden.New`,
-which is initializing golden. `Assert*` and other methods are now accessed like:
+With the introduction of the functional options we also introduced `golden.New`, which is initializing golden. `Assert*` and other methods are now accessed like:
 
 ```
 g := golden.New(t)
@@ -153,4 +148,4 @@ g.Assert(t, ...)
 
 # License
 The golden project is licensed under the terms of [MIT LICENSE](./LICENSE).
-This project was forked from https://github.com/sebdah/goldie. Original author is Sebastian Dahlgren.
+Original author is [Sebastian Dahlgren](https://github.com/sebdah/).
