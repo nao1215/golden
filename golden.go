@@ -71,9 +71,9 @@ var (
 	ts = time.Now()
 )
 
-// Goldie is the root structure for the test runner. It provides test assertions based on golden files. It's
+// Golden is the root structure for the test runner. It provides test assertions based on golden files. It's
 // typically used for testing responses with larger data bodies.
-type Goldie struct {
+type Golden struct {
 	fixtureDir     string
 	fileNameSuffix string
 	filePerms      os.FileMode
@@ -90,8 +90,8 @@ type Goldie struct {
 
 // New creates a new golden file tester. If there is an issue with applying any
 // of the options, an error will be reported and t.FailNow() will be called.
-func New(t *testing.T, options ...Option) *Goldie {
-	g := Goldie{
+func New(t *testing.T, options ...Option) *Golden {
+	g := Golden{
 		fixtureDir:           defaultFixtureDir,
 		fileNameSuffix:       defaultFileNameSuffix,
 		filePerms:            defaultFilePerms,
@@ -147,7 +147,7 @@ func Diff(engine DiffEngine, actual string, expected string) (diff string) {
 // This method does not need to be called from code, but it's exposed so that
 // it can be explicitly called if needed. The more common approach would be to
 // update using `go test -update ./...`.
-func (g *Goldie) Update(t *testing.T, name string, actualData []byte) error {
+func (g *Golden) Update(t *testing.T, name string, actualData []byte) error {
 	goldenFile := g.GoldenFileName(t, name)
 	goldenFileDir := filepath.Dir(goldenFile)
 	if err := g.ensureDir(goldenFileDir); err != nil {
@@ -166,7 +166,7 @@ func (g *Goldie) Update(t *testing.T, name string, actualData []byte) error {
 }
 
 // ensureDir will create the fixture folder if it does not already exist.
-func (g *Goldie) ensureDir(loc string) error {
+func (g *Golden) ensureDir(loc string) error {
 	s, err := os.Stat(loc)
 
 	switch {
@@ -188,7 +188,7 @@ func (g *Goldie) ensureDir(loc string) error {
 }
 
 // GoldenFileName simply returns the file name of the golden file fixture.
-func (g *Goldie) GoldenFileName(t *testing.T, name string) string {
+func (g *Golden) GoldenFileName(t *testing.T, name string) string {
 	dir := g.fixtureDir
 
 	if g.useTestNameForDir {

@@ -6,8 +6,8 @@ import (
 )
 
 // Compile time assurance
-var _ Tester = (*Goldie)(nil)
-var _ OptionProcessor = (*Goldie)(nil)
+var _ Tester = (*Golden)(nil)
+var _ OptionProcessor = (*Golden)(nil)
 
 // Option defines the signature of a functional option method that can apply
 // options to an OptionProcessor.
@@ -16,8 +16,8 @@ type Option func(OptionProcessor) error
 // Tester defines the methods that any golden tester should support.
 type Tester interface {
 	Assert(t *testing.T, name string, actualData []byte)
-	AssertJson(t *testing.T, name string, actualJsonData interface{})
-	AssertXml(t *testing.T, name string, actualXmlData interface{})
+	AssertJSON(t *testing.T, name string, actualJSONData interface{})
+	AssertXML(t *testing.T, name string, actualXMLData interface{})
 	AssertWithTemplate(t *testing.T, name string, data interface{}, actualData []byte)
 	Update(t *testing.T, name string, actualData []byte) error
 	GoldenFileName(t *testing.T, name string) string

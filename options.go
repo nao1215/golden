@@ -5,7 +5,7 @@ import "os"
 // WithFixtureDir sets the fixture directory.
 //
 // Defaults to `testdata`
-func (g *Goldie) WithFixtureDir(dir string) error {
+func (g *Golden) WithFixtureDir(dir string) error {
 	g.fixtureDir = dir
 	return nil
 }
@@ -13,7 +13,7 @@ func (g *Goldie) WithFixtureDir(dir string) error {
 // WithNameSuffix sets the file suffix to be used for the golden file.
 //
 // Defaults to `.golden`
-func (g *Goldie) WithNameSuffix(suffix string) error {
+func (g *Golden) WithNameSuffix(suffix string) error {
 	g.fileNameSuffix = suffix
 	return nil
 }
@@ -22,7 +22,7 @@ func (g *Goldie) WithNameSuffix(suffix string) error {
 // created.
 //
 // Defaults to 0644.
-func (g *Goldie) WithFilePerms(mode os.FileMode) error {
+func (g *Golden) WithFilePerms(mode os.FileMode) error {
 	g.filePerms = mode
 	return nil
 }
@@ -31,14 +31,14 @@ func (g *Goldie) WithFilePerms(mode os.FileMode) error {
 // golden files are created.
 //
 // Defaults to 0755.
-func (g *Goldie) WithDirPerms(mode os.FileMode) error {
+func (g *Golden) WithDirPerms(mode os.FileMode) error {
 	g.dirPerms = mode
 	return nil
 }
 
 // WithDiffEngine sets the `diff` engine that will be used to generate the
 // `diff` text.
-func (g *Goldie) WithDiffEngine(engine DiffEngine) error {
+func (g *Golden) WithDiffEngine(engine DiffEngine) error {
 	g.diffEngine = engine
 	return nil
 }
@@ -46,7 +46,7 @@ func (g *Goldie) WithDiffEngine(engine DiffEngine) error {
 // WithDiffFn sets the `diff` engine to be a function that implements the
 // DiffFn signature. This allows for any customized diff logic you would like
 // to create.
-func (g *Goldie) WithDiffFn(fn DiffFn) error {
+func (g *Golden) WithDiffFn(fn DiffFn) error {
 	g.diffFn = fn
 	return nil
 }
@@ -55,7 +55,7 @@ func (g *Goldie) WithDiffFn(fn DiffFn) error {
 // in the template that do not have corresponding data values passed in.
 //
 // Default value is false.
-func (g *Goldie) WithIgnoreTemplateErrors(ignoreErrors bool) error {
+func (g *Golden) WithIgnoreTemplateErrors(ignoreErrors bool) error {
 	g.ignoreTemplateErrors = ignoreErrors
 	return nil
 }
@@ -64,7 +64,7 @@ func (g *Goldie) WithIgnoreTemplateErrors(ignoreErrors bool) error {
 // fixture directory to store all the golden files.
 //
 // Default value is false.
-func (g *Goldie) WithTestNameForDir(use bool) error {
+func (g *Golden) WithTestNameForDir(use bool) error {
 	g.useTestNameForDir = use
 	return nil
 }
@@ -74,7 +74,7 @@ func (g *Goldie) WithTestNameForDir(use bool) error {
 // the test name's directory. Otherwise, it will be in the fixture directory.
 //
 // Default value is false.
-func (g *Goldie) WithSubTestNameForDir(use bool) error {
+func (g *Golden) WithSubTestNameForDir(use bool) error {
 	g.useSubTestNameForDir = use
 	return nil
 }

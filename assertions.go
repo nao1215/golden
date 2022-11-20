@@ -18,7 +18,7 @@ import (
 // `name` refers to the name of the test and it should typically be unique
 // within the package. Also it should be a valid file name (so keeping to
 // `a-z0-9\-\_` is a good idea).
-func (g *Goldie) Assert(t *testing.T, name string, actualData []byte) {
+func (g *Golden) Assert(t *testing.T, name string, actualData []byte) {
 	t.Helper()
 	if *update {
 		err := g.Update(t, name, actualData)
@@ -51,16 +51,16 @@ func (g *Goldie) Assert(t *testing.T, name string, actualData []byte) {
 	}
 }
 
-// AssertJson compares the actual json data received with expected data in the
+// AssertJSON compares the actual json data received with expected data in the
 // golden files. If the update flag is set, it will also update the golden
 // file.
 //
 // `name` refers to the name of the test and it should typically be unique
 // within the package. Also it should be a valid file name (so keeping to
 // `a-z0-9\-\_` is a good idea).
-func (g *Goldie) AssertJson(t *testing.T, name string, actualJsonData interface{}) {
+func (g *Golden) AssertJSON(t *testing.T, name string, actualJSONData interface{}) {
 	t.Helper()
-	js, err := json.MarshalIndent(actualJsonData, "", "  ")
+	js, err := json.MarshalIndent(actualJSONData, "", "  ")
 
 	if err != nil {
 		t.Error(err)
@@ -70,16 +70,16 @@ func (g *Goldie) AssertJson(t *testing.T, name string, actualJsonData interface{
 	g.Assert(t, name, normalizeLF(js))
 }
 
-// AssertXml compares the actual xml data received with expected data in the
+// AssertXML compares the actual xml data received with expected data in the
 // golden files. If the update flag is set, it will also update the golden
 // file.
 //
 // `name` refers to the name of the test and it should typically be unique
 // within the package. Also it should be a valid file name (so keeping to
 // `a-z0-9\-\_` is a good idea).
-func (g *Goldie) AssertXml(t *testing.T, name string, actualXmlData interface{}) {
+func (g *Golden) AssertXML(t *testing.T, name string, actualXMLData interface{}) {
 	t.Helper()
-	x, err := xml.MarshalIndent(actualXmlData, "", "  ")
+	x, err := xml.MarshalIndent(actualXMLData, "", "  ")
 
 	if err != nil {
 		t.Error(err)
@@ -103,13 +103,13 @@ func normalizeLF(d []byte) []byte {
 	return d
 }
 
-// Assert compares the actual data received with the expected data in the
+// AssertWithTemplate compares the actual data received with the expected data in the
 // golden files after executing it as a template with data parameter. If the
 // update flag is set, it will also update the golden file.  `name` refers to
 // the name of the test and it should typically be unique within the package.
 // Also it should be a valid file name (so keeping to `a-z0-9\-\_` is a good
 // idea).
-func (g *Goldie) AssertWithTemplate(t *testing.T, name string, data interface{}, actualData []byte) {
+func (g *Golden) AssertWithTemplate(t *testing.T, name string, data interface{}, actualData []byte) {
 	t.Helper()
 	if *update {
 		err := g.Update(t, name, actualData)
@@ -144,7 +144,7 @@ func (g *Goldie) AssertWithTemplate(t *testing.T, name string, data interface{},
 
 // compare is reading the golden fixture file and compare the stored data with
 // the actual data.
-func (g *Goldie) compare(t *testing.T, name string, actualData []byte) error {
+func (g *Golden) compare(t *testing.T, name string, actualData []byte) error {
 	expectedData, err := os.ReadFile(g.GoldenFileName(t, name))
 
 	if err != nil {
@@ -174,7 +174,7 @@ func (g *Goldie) compare(t *testing.T, name string, actualData []byte) error {
 
 // compareTemplate is reading the golden fixture file and compare the stored
 // data with the actual data.
-func (g *Goldie) compareTemplate(t *testing.T, name string, data interface{}, actualData []byte) error {
+func (g *Golden) compareTemplate(t *testing.T, name string, data interface{}, actualData []byte) error {
 	expectedDataTmpl, err := os.ReadFile(g.GoldenFileName(t, name))
 
 	if err != nil {
