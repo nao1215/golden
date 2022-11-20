@@ -11,7 +11,7 @@
 The concept is straight forward. Valid response data is stored in a "golden file". The actual response data will be byte compared with the golden file and the test will fail if there is a difference. Updating the golden file can be done by running `go test -update ./...`.
 
 See the [GoDoc](https://godoc.org/github.com/nao1215/golden) for API reference and configuration options.
-This project is forked from [github.com/sebdah/goldie](https://github.com/sebdah/goldie). Original project (== goldie) is not support windows. Also, there is deprecated function and not enough unit tests. So, I forked it.
+This project is forked from [github.com/sebdah/goldie](https://github.com/sebdah/goldie). Original project (== goldie) is not support windows. Also, there is deprecated function and not enough unit tests. So, I forked it over with the goal is improved reliability and stability. 
 
 # Support OS
 - Windows
