@@ -1,3 +1,10 @@
+[![Coverage](https://github.com/nao1215/golden/actions/workflows/coverage.yml/badge.svg)](https://github.com/nao1215/golden/actions/workflows/coverage.yml)
+[![LinuxUnitTest](https://github.com/nao1215/golden/actions/workflows/linux_test.yml/badge.svg)](https://github.com/nao1215/golden/actions/workflows/linux_test.yml)
+[![MacUnitTest](https://github.com/nao1215/golden/actions/workflows/mac_test.yml/badge.svg)](https://github.com/nao1215/golden/actions/workflows/mac_test.yml)
+[![WindowsUnitTest](https://github.com/nao1215/golden/actions/workflows/windows.yml/badge.svg)](https://github.com/nao1215/golden/actions/workflows/windows.yml)
+[![reviewdog](https://github.com/nao1215/golden/actions/workflows/reviewdog.yml/badge.svg)](https://github.com/nao1215/golden/actions/workflows/reviewdog.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/nao1215/golden)](https://goreportcard.com/report/github.com/nao1215/golden)
+
 # golden - Golden test utility for Go
 `golden` is a golden file test utility for Go projects. It's typically used for testing responses with larger data bodies. 
   
