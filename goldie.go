@@ -11,7 +11,6 @@ package golden
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -155,7 +154,7 @@ func (g *Goldie) Update(t *testing.T, name string, actualData []byte) error {
 		return err
 	}
 
-	if err := ioutil.WriteFile(goldenFile, actualData, g.filePerms); err != nil {
+	if err := os.WriteFile(goldenFile, actualData, g.filePerms); err != nil {
 		return err
 	}
 

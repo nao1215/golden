@@ -2,7 +2,6 @@ package golden
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"testing"
@@ -145,7 +144,7 @@ func TestUpdate(t *testing.T) {
 			err := g.Update(t, test.name, test.data)
 			assert.Equal(t, test.err, err)
 
-			data, err := ioutil.ReadFile(g.GoldenFileName(t, test.name))
+			data, err := os.ReadFile(g.GoldenFileName(t, test.name))
 			assert.Nil(t, err)
 			assert.Equal(t, test.data, data)
 

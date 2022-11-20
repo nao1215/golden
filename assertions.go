@@ -6,7 +6,6 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"testing"
 	"text/template"
@@ -146,7 +145,7 @@ func (g *Goldie) AssertWithTemplate(t *testing.T, name string, data interface{},
 // compare is reading the golden fixture file and compare the stored data with
 // the actual data.
 func (g *Goldie) compare(t *testing.T, name string, actualData []byte) error {
-	expectedData, err := ioutil.ReadFile(g.GoldenFileName(t, name))
+	expectedData, err := os.ReadFile(g.GoldenFileName(t, name))
 
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -176,7 +175,7 @@ func (g *Goldie) compare(t *testing.T, name string, actualData []byte) error {
 // compareTemplate is reading the golden fixture file and compare the stored
 // data with the actual data.
 func (g *Goldie) compareTemplate(t *testing.T, name string, data interface{}, actualData []byte) error {
-	expectedDataTmpl, err := ioutil.ReadFile(g.GoldenFileName(t, name))
+	expectedDataTmpl, err := os.ReadFile(g.GoldenFileName(t, name))
 
 	if err != nil {
 		if os.IsNotExist(err) {
