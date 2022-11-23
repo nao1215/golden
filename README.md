@@ -153,6 +153,10 @@ g := golden.New(t)
 g.Assert(t, ...)
 ```
 
+# Contributing
+First off, thanks for taking the time to contribute! Contributions are not only related to development. For example, GitHub Star motivates me to develop!
+[![Star History Chart](https://api.star-history.com/svg?repos=nao1215/golden&type=Date)](https://star-history.com/#nao1215/golden&Date)
+
 # License
 The golden project is licensed under the terms of [MIT LICENSE](./LICENSE).
 Original author is [Sebastian Dahlgren](https://github.com/sebdah/).
